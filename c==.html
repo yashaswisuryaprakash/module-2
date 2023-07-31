@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    #include <iostream>
+        #include <windows.h>
+        #include <conio.h>
+        
+        // Function to set console text color
+        void setConsoleColor(int color)
+        {
+            HANDLE consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+            SetConsoleTextAttribute(consoleHandle, color);
+        }
+        
+        int main()
+        {
+            // Set console window size and title
+            HWND console = GetConsoleWindow();
+            RECT ConsoleRect;
+            GetWindowRect(console, &ConsoleRect);
+            MoveWindow(console, ConsoleRect.left, ConsoleRect.top, 800, 600, TRUE);
+            SetConsoleTitle(TEXT("Colorful Game"));
+        
+            // Clear console screen
+            system("cls");
+        
+            // Game loop
+            while (true)
+            {
+                // Set random background color
+                int randomColor = rand() % 16;
+                setConsoleColor(randomColor);
+        
+                // Clear console screen
+                system("cls");
+        
+                // Print game content
+                setConsoleColor(14); // Yellow text color
+                std::cout << "Welcome to Colorful Game!" << std::endl;
+        
+                setConsoleColor(11); // Light cyan text color
+                std::cout << "Press any key to start..." << std::endl;
+        
+                // Wait for user input
+                if (_kbhit())
+                    break;
+        
+                // Delay for a short time
+                Sleep(1000);
+            }
+        
+            // Clear console screen
+            system("cls");
+        
+            // Print final game message
+            setConsoleColor(10); // Light green text color
+            std::cout << "Game Over!" << std::endl;
+        
+            return 0;
+        }
+        
+</body>
+</html>

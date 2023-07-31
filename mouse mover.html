@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "mydiv">
+
+    </div>
+    <script>
+        constm d = document.getElementById("mydiv");
+        function mouseoverdone()
+        {
+            md.style.backgroundColor = "red";
+        }
+        function mouseoutdone()
+        {
+        md.addEventListener("mouseover",mouseoverdone);
+        }
+        md.addEventListener("mouseover", mouseoverdone);
+        md.addEventListener("mouseout", mouseoutdone);
+
+    </script>
+</body>
+</html>

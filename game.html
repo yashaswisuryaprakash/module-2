@@ -1,0 +1,28 @@
+#include <iostream>
+    #include <Windows.h> // Required for console colors
+    
+    int main() {
+        // Set console color attributes
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+    
+        // Define the pattern
+        const std::string pattern = "******";
+        const int patternLength = pattern.length();
+    
+        // Loop to print the pattern
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < patternLength; j++) {
+                // Set color based on the position in the pattern
+                SetConsoleTextAttribute(hConsole, (i + j) % 15 + 1);
+                std::cout << pattern[j];
+            }
+            std::cout << std::endl;
+        }
+    
+        // Reset console color attributes
+        SetConsoleTextAttribute(hConsole, FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_RED);
+    
+        return 0;
+    }
+    
